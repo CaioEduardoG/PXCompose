@@ -1,0 +1,31 @@
+version: '3'
+services:
+  web: 
+    restart: always
+    build: ../PXApp
+    environment:
+      - BASE_URL=${base_url}
+    ports: 
+      - "80:80"  
+
+  consumidor:
+    build: ../Projeto X/Consumidor
+    environment:
+      - AWS_ACCESS_KEY_ID=${aws_access_key_id}
+      - AWS_SECRET_ACCESS_KEY=${aws_secret_access_key}
+      - AWS_REGION=${aws_region}
+    ports:
+      - "81:80"
+
+  produtor:
+    build: ../Projeto X/Produtor
+    environment:
+      - AWS_ACCESS_KEY_ID=${aws_access_key_id}
+      - AWS_SECRET_ACCESS_KEY=${aws_secret_access_key}
+      - AWS_REGION=${aws_region}
+    ports:
+      - "82:80"
+
+#  networks:
+#    default:
+#      driver: simple-network
