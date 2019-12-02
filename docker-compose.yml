@@ -1,12 +1,12 @@
-version: '3'
+version: "3.0"
 services:
   web: 
-    restart: always
     build: ../PXApp
-    environment:
-      - BASE_URL=${base_url}
     ports: 
       - "80:80"  
+    networks:
+      vnet_front:
+        ipv4_address: 10.10.10.2
 
   consumidor:
     build: ../Projeto X/Consumidor
@@ -14,18 +14,32 @@ services:
       - AWS_ACCESS_KEY_ID=${aws_access_key_id}
       - AWS_SECRET_ACCESS_KEY=${aws_secret_access_key}
       - AWS_REGION=${aws_region}
+      - NOME_FILA=${nome_fila}
+      - NOMETABELA=${nome_tabela}
     ports:
       - "81:80"
-
+    networks:
+      vnet_front:
+        ipv4_address: 10.10.10.3
+    
   produtor:
     build: ../Projeto X/Produtor
     environment:
       - AWS_ACCESS_KEY_ID=${aws_access_key_id}
       - AWS_SECRET_ACCESS_KEY=${aws_secret_access_key}
       - AWS_REGION=${aws_region}
+      - NOME_FILA=${nome_fila}
+      - NOMETABELA=${nome_tabela}
+      - PORT=${port}
     ports:
       - "82:80"
+    networks:
+      vnet_front:
+        ipv4_address: 10.10.10.4
 
-#  networks:
-#    default:
-#      driver: simple-network
+networks:
+  vnet_front:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.10.0/16
