@@ -10,7 +10,7 @@ resource "aws_ecs_task_definition" "pxapp" {
     {
       "name": "PXApp",
       "network_mode": "awsvpc",
-      "image": "nginx",
+      "image": "366283639950.dkr.ecr.us-east-2.amazonaws.com/projetox:web",
       "cpu": 512,
       "memory": 1024,
       "essential": true,
@@ -37,7 +37,7 @@ resource "aws_ecs_task_definition" "pxconsumidor" {
     {
       "name": "PXConsumidor",
       "network_mode": "awsvpc",
-      "image": "nginx",
+      "image": "366283639950.dkr.ecr.us-east-2.amazonaws.com/projetox:consumidor",
       "cpu": 512,
       "memory": 1024,
       "essential": true,
@@ -90,7 +90,7 @@ resource "aws_ecs_task_definition" "pxprodutor" {
     {
       "name": "PXProdutor",
       "network_mode": "awsvpc",
-      "image": "nginx",
+      "image": "366283639950.dkr.ecr.us-east-2.amazonaws.com/projetox:produtor",
       "cpu": 512,
       "memory": 1024,
       "essential": true,
@@ -134,4 +134,3 @@ resource "aws_ecs_task_definition" "pxprodutor" {
   ]
   DEFINITION
 }
-

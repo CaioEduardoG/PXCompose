@@ -16,6 +16,7 @@ services:
       - AWS_REGION=${aws_region}
       - NOME_FILA=${nome_fila}
       - NOMETABELA=${nome_tabela}
+      - NODE_ENV=prod
     ports:
       - "81:80"
     networks:
@@ -31,6 +32,7 @@ services:
       - NOME_FILA=${nome_fila}
       - NOMETABELA=${nome_tabela}
       - PORT=${port}
+      - NODE_ENV=prod
     ports:
       - "82:80"
     networks:

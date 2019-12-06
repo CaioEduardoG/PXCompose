@@ -11,6 +11,8 @@ resource "aws_ecs_service" "pxapp" {
       "${aws_subnet.subnet2.id}",
       "${aws_subnet.subnet3.id}",
     ]
+    assign_public_ip = true
+    security_groups = ["${aws_security_group.allow_tls.id}"]
   }
 }
 
@@ -27,6 +29,8 @@ resource "aws_ecs_service" "pxconsumidor" {
       "${aws_subnet.subnet2.id}",
       "${aws_subnet.subnet3.id}",
     ]
+    assign_public_ip = true
+    security_groups = ["${aws_security_group.allow_tls.id}"]
   }
 }
 
@@ -43,6 +47,8 @@ resource "aws_ecs_service" "pxprodutor" {
       "${aws_subnet.subnet2.id}",
       "${aws_subnet.subnet3.id}",
     ]
+    assign_public_ip = true
+    security_groups = ["${aws_security_group.allow_tls.id}"]
   }
 }
 
