@@ -1,18 +1,18 @@
 resource "aws_ecs_task_definition" "pxapp" {
-  family = "pxapp"
-  network_mode = "awsvpc"
+  family                   = "pxapp"
+  network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  cpu = "512"
-  memory = "1024"
-  execution_role_arn = "${aws_iam_role.ecsTaskExecutionRole.arn}"
-  container_definitions = <<DEFINITION
+  cpu                      = "1024"
+  memory                   = "2048"
+  execution_role_arn       = "${aws_iam_role.ecsTaskExecutionRole.arn}"
+  container_definitions    = <<DEFINITION
   [
     {
-      "name": "PXApp",
+      "name": "pxapp",
       "network_mode": "awsvpc",
-      "image": "366283639950.dkr.ecr.us-east-2.amazonaws.com/projetox:web",
-      "cpu": 512,
-      "memory": 1024,
+      "image": "366283639950.dkr.ecr.us-east-2.amazonaws.com/projetox:pxapp",
+      "cpu": 1024,
+      "memory": 2048,
       "essential": true,
       "portMappings": [
         {
@@ -26,20 +26,20 @@ resource "aws_ecs_task_definition" "pxapp" {
 }
 
 resource "aws_ecs_task_definition" "pxconsumidor" {
-  family = "pxconsumidor"
-  network_mode = "awsvpc"
+  family                   = "pxconsumidor"
+  network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  cpu = "512"
-  memory = "1024"
-  execution_role_arn = "${aws_iam_role.ecsTaskExecutionRole.arn}"
-  container_definitions = <<DEFINITION
+  cpu                      = "1024"
+  memory                   = "2048"
+  execution_role_arn       = "${aws_iam_role.ecsTaskExecutionRole.arn}"
+  container_definitions    = <<DEFINITION
   [
     {
-      "name": "PXConsumidor",
+      "name": "pxconsumidor",
       "network_mode": "awsvpc",
-      "image": "366283639950.dkr.ecr.us-east-2.amazonaws.com/projetox:consumidor",
-      "cpu": 512,
-      "memory": 1024,
+      "image": "366283639950.dkr.ecr.us-east-2.amazonaws.com/projetox:pxconsumidor",
+      "cpu": 1024,
+      "memory": 2048,
       "essential": true,
       "portMappings": [
         {
@@ -82,17 +82,17 @@ resource "aws_ecs_task_definition" "pxprodutor" {
   family                   = "pxprodutor"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  cpu = "512"
-  memory = "1024"
-  execution_role_arn = "${aws_iam_role.ecsTaskExecutionRole.arn}"
+  cpu                      = "1024"
+  memory                   = "2048"
+  execution_role_arn       = "${aws_iam_role.ecsTaskExecutionRole.arn}"
   container_definitions    = <<DEFINITION
   [
     {
-      "name": "PXProdutor",
+      "name": "pxprodutor",
       "network_mode": "awsvpc",
-      "image": "366283639950.dkr.ecr.us-east-2.amazonaws.com/projetox:produtor",
-      "cpu": 512,
-      "memory": 1024,
+      "image": "366283639950.dkr.ecr.us-east-2.amazonaws.com/projetox:pxprodutor",
+      "cpu": 1024,
+      "memory": 2048,
       "essential": true,
       "portMappings": [
         {
